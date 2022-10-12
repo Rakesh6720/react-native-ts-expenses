@@ -1,6 +1,7 @@
 import { setStatusBarNetworkActivityIndicatorVisible } from "expo-status-bar";
 import { useLayoutEffect, useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 import Button from "../components/ui/Button";
 import IconButton from "../components/ui/IconButton";
 import { GlobalStyles } from "../constants/styles";
@@ -47,6 +48,7 @@ export default function ManageExpense({ route, navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
+        <ExpenseForm />
         <Button mode="flat" onPress={cancelHandler}>
           Cancel
         </Button>
