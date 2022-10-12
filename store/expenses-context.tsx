@@ -39,7 +39,7 @@ export default function ExpensesContextProvider({ children }) {
     dispatch({ type: "ADD", payload: expenseData });
   }
 
-  function deleteExpense(id) {
+  function deleteExpense(id: string) {
     dispatch({ type: "DELETE", payload: id });
   }
 

@@ -1,10 +1,13 @@
-import { useLayoutEffect } from "react";
+import { setStatusBarNetworkActivityIndicatorVisible } from "expo-status-bar";
+import { useLayoutEffect, useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/ui/Button";
 import IconButton from "../components/ui/IconButton";
 import { GlobalStyles } from "../constants/styles";
+import { ExpensesContext } from "../store/expenses-context";
 
 export default function ManageExpense({ route, navigation }) {
+  const expensesCtx = useContext(ExpensesContext);
   const editedExpenseId = route.params?.expenseId;
   // if is not null then isEditing == true
   const isEditing = !!editedExpenseId;
@@ -16,6 +19,7 @@ export default function ManageExpense({ route, navigation }) {
   }, [isEditing, navigation]);
 
   function deleteExpenseHandler() {
+    expensesCtx.deleteExpense(editedExpenseId);
     navigation.goBack();
   }
 
@@ -24,6 +28,19 @@ export default function ManageExpense({ route, navigation }) {
   }
 
   function confirmHandler() {
+    if (isEditing) {
+      expensesCtx.updateExpense(editedExpenseId, {
+        description: "Test",
+        amount: 19.99,
+        date: new Date("2022-5-19"),
+      });
+    } else {
+      expensesCtx.addExpense({
+        description: "Test!!!!",
+        amount: 29.99,
+        date: new Date(2022 - 5 - 19),
+      });
+    }
     navigation.goBack();
   }
 
