@@ -3,7 +3,7 @@ import { GlobalStyles } from "../../constants/styles";
 import ExpensesList from "./ExpensesList";
 import ExpensesSummary from "./ExpensesSummary";
 
-const DUMMY_EXPENSES = [
+export const DUMMY_EXPENSES = [
   {
     id: "e1",
     description: "A pair of shoes",
