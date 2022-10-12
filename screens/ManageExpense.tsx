@@ -47,8 +47,8 @@ export default function ManageExpense({ route, navigation }) {
 
   return (
     <View style={styles.container}>
+      <ExpenseForm />
       <View style={styles.buttonContainer}>
-        <ExpenseForm />
         <Button mode="flat" onPress={cancelHandler}>
           Cancel
         </Button>
