@@ -2,8 +2,8 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { GlobalStyles } from "../../constants/styles";
 
 interface ButtonProps {
-  children: any;
-  onPress: () => void;
+  children?: any;
+  onPress?: () => void;
   mode?: string;
   style?: {
     minWidth: number;
@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 8,
     backgroundColor: GlobalStyles.colors.primary500,
+    minWidth: 120,
+    marginHorizontal: 8,
   },
   flat: {
     backgroundColor: "transparent",
