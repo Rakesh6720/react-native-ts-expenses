@@ -27,15 +27,22 @@ export const DUMMY_EXPENSES = [
 interface ExpensesOutputProps {
   expenses?: any[] | undefined;
   expensesPeriod: string;
+  fallbackText: string;
 }
 export default function ExpensesOutput({
   expenses,
   expensesPeriod,
+  fallbackText,
 }: ExpensesOutputProps) {
+  let content = <Text style={styles.infoText}>{fallbackText}</Text>;
+
+  if (expenses.length > 0) {
+    return <ExpensesList expenses={expenses} />;
+  }
   return (
     <View style={styles.container}>
       <ExpensesSummary expenses={expenses} periodName={expensesPeriod} />
-      <ExpensesList expenses={expenses} />
+      {content}
     </View>
   );
 }
@@ -45,5 +52,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     backgroundColor: GlobalStyles.colors.primary700,
+  },
+  infoText: {
+    color: "white",
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 32,
   },
 });
